@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-SepAlum::Application.config.secret_key_base = 'bbadc113c64ff23a2187326ba79ded47250eb8bb03992170ec031ba183fe6a4f1149c4102796c89a8ab2f34fb7baff2a7f05adcdd9ca18243a4d42b78c0743ba'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+SepAlum::Application.config.secret_key_base = secure_token
