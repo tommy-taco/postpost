@@ -1,3 +1,3 @@
 # Alumni app
 
-Here is the alumni app, my first 100% on my own rails app
+Here is the alumni app, my first rails app on my own.
