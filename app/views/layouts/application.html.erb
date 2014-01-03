@@ -4,25 +4,13 @@
 		<title><%= full_title(yield(:title)) %></title>  <%= stylesheet_link_tag    "flatly", media: "all", "data-turbolinks-track" => true %>
 	  	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 	  	<%= csrf_meta_tags %>
+	  	<%= render 'layouts/shim' %>
 	</head>
 	<body>
-		<header class="navbar navbar-fixed-top navbar-inverse">
-	      <div class="navbar-inner">
-	        <div class="container">
-	          <%= link_to "PostPost", '#', id: "logo" %>
-	          <nav>
-	            <ul class="nav pull-right">
-	              <li><%= link_to "Home",    '#' %></li>
-	              <li><%= link_to "About",    '#' %></li>
-	              <li><%= link_to "Contact",    '#' %></li>
-	              <li><%= link_to "Sign in", '#' %></li>
-	            </ul>
-	          </nav>
-	        </div>
-	      </div>
-	    </header>
-    <div class="container">
-      <%= yield %>
-    </div>
-  </body>
+		<%= render 'layouts/header' %>
+    	<div class="container">
+      		<%= yield %>
+      		<%= render 'layouts/footer' %>
+    	</div>
+  	</body>
 </html>
