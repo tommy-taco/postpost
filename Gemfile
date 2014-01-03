@@ -3,9 +3,14 @@ ruby '2.0.0'
 #ruby-gemset=railstutorial_rails_4_0
 
 gem 'rails', '4.0.2'
+gem 'pg', '0.15.1'
+gem 'bootstrap-sass', '2.3.2.0'
+gem 'twitter-bootswatch-rails', '2.3.2.8'
+gem 'twitter-bootswatch-rails-helpers'
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 
 group :development, :test do
-  gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'
   gem 'guard-rspec', '2.5.0'
   gem 'spork-rails', '4.0.0'
@@ -17,7 +22,6 @@ group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
   gem 'growl', '1.0.3'
-
 end
 
 gem 'sass-rails', '4.0.1'
@@ -32,6 +36,5 @@ group :doc do
 end
 
 group :production do
-  gem 'pg', '0.15.1'
   gem 'rails_12factor', '0.0.2'
 end
