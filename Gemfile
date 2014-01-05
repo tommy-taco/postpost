@@ -5,10 +5,15 @@ ruby '2.0.0'
 gem 'rails', '4.0.2'
 gem 'pg', '0.15.1'
 gem 'bootstrap-sass', '2.3.2.0'
+
+#free custom bootstrap theme
 gem 'twitter-bootswatch-rails', '2.3.2.8'
 gem 'twitter-bootswatch-rails-helpers'
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+
+#for pword encryption
+gem 'bcrypt-ruby', '3.1.2'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
