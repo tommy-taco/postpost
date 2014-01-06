@@ -6,5 +6,7 @@ class UsersController < ApplicationController
   end
 
   def new
+  	@user = User.new
+  	@organizations = Organization.all
   end
 end
