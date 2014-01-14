@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
 
   def new
-  	@organizations = Organization.all
   end
 
   def create
