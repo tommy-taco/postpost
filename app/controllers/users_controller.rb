@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
   
   def join
+  @user = current_user
   	if joined_org?
   		render
   	else
