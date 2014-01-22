@@ -1,16 +1,27 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user, only: [:edit, :update, :index, :show]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :signed_in_user, only: [:edit, :update, :index, :show, :join]
+  before_action :correct_user,   only: [:edit, :update, :join]
   before_action :admin_user,     only: :destroy
 
   def show
     @user = User.find(params[:id])
     @organization = @user.organization
   end
+  
+  def join
+  	if joined_org?
+  		render
+  	else
+  		redirect_to(root_path)
+  	end
+  end
 
   def new
-   	@user = User.new
-   	@organizations = Organization.all
+  	if signed_in?
+  		redirect_to(root_path, :notice => "You are signed in.")
+    else
+	   	@user = User.new
+	end
   end
   
   def create

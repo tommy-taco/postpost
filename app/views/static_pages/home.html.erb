@@ -1,5 +1,15 @@
+<% if signed_in? %>
+<h1>TEST HOME - YOU ARE LOGGED IN</h1>
+<%= will_paginate @users %>
+<ul class="users">
+  <%= render @users %>
+</ul>
+<%= will_paginate @users %>
+
+<% else %>
 <div class="center hero-unit">
 	<h1>PostPost</h1>
 	<h2>Hey bros, meet your bros.</h2>
 	<%= link_to "Get Started!", signup_path, class: "btn btn-large btn-primary" %>
 </div>
+<% end %>

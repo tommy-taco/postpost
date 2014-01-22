@@ -11,9 +11,6 @@
 
       <%= f.label :email %>
       <%= f.text_field :email %>
-      
-      <%= f.label :organization_id %>
-      <%= f.collection_select :organization_id, @organizations, :id, :name, include_blank: true %>
 
       <%= f.label :password %>
       <%= f.password_field :password %>
