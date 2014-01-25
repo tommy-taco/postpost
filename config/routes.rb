@@ -1,4 +1,5 @@
 SepAlum::Application.routes.draw do
+	resources :organizations
 	resources :users
 	resources :sessions, only: [:new, :create, :destroy]
 	root  'static_pages#home'
