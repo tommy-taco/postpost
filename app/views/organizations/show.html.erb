@@ -1,3 +1,7 @@
 <% provide(:title, @organization.name) %>
 
 <h1><%= @organization.name %></h1>
+
+<% if current_user.admin? %>
+	<%= button_to "delete", @organization, method: :delete, data: { confirm: "You sure?" } %>
+<% end %>
