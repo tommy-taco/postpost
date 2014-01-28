@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	has_many :memberships, foreign_key: "member_id", dependent: :destroy
+	has_many :organizations, through: :memberships, source: :organization
 	before_save { self.email = email.downcase }
 	before_create :create_remember_token
   	before_save { self.email = email.downcase }
@@ -9,6 +11,7 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   	has_secure_password
   	validates :password, length: { minimum: 6 }
+  	
   	def User.new_remember_token
     SecureRandom.urlsafe_base64
   	end
@@ -16,6 +19,20 @@ class User < ActiveRecord::Base
 	def User.encrypt(token)
 	    Digest::SHA1.hexdigest(token.to_s)
 	end
+	
+	def member?(org)
+		memberships.find_by(user_id: org.id)
+	end	
+
+	def join!(org)
+		memberships.create!(user_id: org.id)
+	end
+
+	def leave!(org)
+		memberships.find_by(user_id: org.id).destroy
+	end
+
+
 
   private
 
