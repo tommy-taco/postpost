@@ -21,15 +21,15 @@ class User < ActiveRecord::Base
 	end
 	
 	def member?(org)
-		memberships.find_by(user_id: org.id)
+		self.memberships.find_by(organization_id: org.id)
 	end	
 
 	def join!(org)
-		memberships.create!(user_id: org.id)
+		self.memberships.create!(organization_id: org.id)
 	end
 
 	def leave!(org)
-		memberships.find_by(user_id: org.id).destroy
+		memberships.find_by(organization_id: org.id).destroy
 	end
 
 
@@ -40,3 +40,4 @@ class User < ActiveRecord::Base
       self.remember_token = User.encrypt(User.new_remember_token)
     end
 end
+
