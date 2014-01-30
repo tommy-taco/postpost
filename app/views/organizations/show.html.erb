@@ -2,6 +2,34 @@
 
 <h1><%= @organization.name %></h1>
 
+<% if current_user.member?(@organization) %>
+	<% if @members.any? %>
+		<%= @members.count %>
+	      <ul class="users">
+	        <%= render @members %>
+	      </ul>
+	      <%= will_paginate @members %>
+	    </div>
+	<% else %>
+		<h3>No one here!</h3>
+	<% end %>
+<% else %>
+	<%= form_for(current_user.memberships.build(organization_id: @organization.id)) do |f| %>
+  		<div><%= f.hidden_field :organization_id %></div>
+  	<%= f.submit "Ask to Join", class: "btn btn-large btn-primary join-btn" %>
+	<% end %>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
 <% if current_user.admin? %>
 	<%= button_to "delete", @organization, method: :delete, data: { confirm: "You sure?" } %>
 <% end %>

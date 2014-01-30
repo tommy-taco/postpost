@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 	has_many :memberships, foreign_key: "member_id", dependent: :destroy
 	has_many :organizations, through: :memberships, source: :organization
+	#state shiz
+	#has_many :pending_organizations, through: :pending_members, source :member
 	before_save { self.email = email.downcase }
 	before_create :create_remember_token
   	before_save { self.email = email.downcase }

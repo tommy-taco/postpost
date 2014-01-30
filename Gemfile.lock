@@ -184,6 +184,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    state_machine (1.2.0)
     therubyracer (0.12.0)
       libv8 (~> 3.16.14.0)
       ref
@@ -238,6 +239,7 @@ DEPENDENCIES
   sdoc (= 0.3.20)
   selenium-webdriver (= 2.35.1)
   spork-rails (= 4.0.0)
+  state_machine
   therubyracer
   turbolinks (= 1.1.1)
   twitter-bootswatch-rails (= 2.3.2.8)

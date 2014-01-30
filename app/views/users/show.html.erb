@@ -2,10 +2,18 @@
 <div class="row">
 	<aside class="span4">
 	    <section>
-			<h1>
+	    	<h1>
 			<%= link_to image_tag("pizzaprof.jpg", alt: "Lorem Pizza"), 'http://rubyonrails.org/' %>
-			<%= @user.name %>
-			</h1>
+			<%= @user.name %></h1>
+			<% if @memberships.count === 1 %>
+				<h3><%= @user.organizations.first.name %></h3>	
+			<% elsif @memberships.count === 0 %>
+				<h3>Not in a group!</h3>
+			<% else %>
+				<% @memberships.map do |a| %>
+					<h3><%=a.name %> <%= ", " unless a == @memberships.last %></h3>
+				<% end %>
+			<% end %>
 		</section>
 	</aside>
 </div>

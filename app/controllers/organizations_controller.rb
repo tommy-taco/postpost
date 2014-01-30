@@ -19,6 +19,7 @@ class OrganizationsController < ApplicationController
   
   def show
   	@organization = Organization.find(params[:id])
+  	@members = @organization.members.paginate(page: params[:page])
   end
   
   def edit
