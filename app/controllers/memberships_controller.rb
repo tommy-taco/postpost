@@ -7,6 +7,12 @@ class MembershipsController < ApplicationController
     redirect_to @organization
   end
   
+  def destroy
+  end
+  
+  def edit
+  end
+  
   #all dat state shiz
 =begin  
   def index

@@ -1,8 +1,12 @@
 SepAlum::Application.routes.draw do
-	resources :organizations
+	resources :organizations do
+	    member do
+	      get :members, :requests
+	    end
+  	end
 	resources :users
 	resources :sessions, only: [:new, :create, :destroy]
-	resources :memberships,    only: [:create, :destroy]
+	resources :memberships,    only: [:create, :destroy, :edit]
 	root  'static_pages#home'
 	match '/signin',  to: 'sessions#new',         via: 'get'
   	match '/signout', to: 'sessions#destroy',     via: 'delete'

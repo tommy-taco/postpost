@@ -43,6 +43,16 @@ class OrganizationsController < ApplicationController
     redirect_to root_path
   end
   
+  def members
+  	@organization = Organization.find(params[:id])
+  	@memberships = @organization.memberships
+  	@members = @organization.members.paginate(page: params[:page])
+  	
+  end
+  
+  def requests
+  end
+  
   private
   	
   	def org_params

@@ -1,0 +1,18 @@
+<% provide(:title, 'Members') %>
+
+<h1><%= @organization.name %> Members</h1>
+
+<% if current_user.member?(@organization) %>
+	<% if @members.any? %>
+		<%= @members.count %>	
+	      <ul class="users">
+	        <%= render @members%>
+	      </ul>
+	      <%= will_paginate @members %>
+	    </div>
+	<% else %>
+		<h3>No one here!</h3>
+	<% end %>
+<% else %>
+	<h2>Your not in this club</h2>
+<% end %>
